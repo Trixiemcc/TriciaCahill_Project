@@ -1,0 +1,37 @@
+Info: Opened JTAG Master Service
+TSE MAC Statistics Counters Map
+==============================
+Addr	 Name					 Read Value
+----	 ----					 ----------
+0x68	 aFramesTransmittedOK			 0
+0x6c	 aFramesReceivedOK			 0
+0x70	 aFrameCheckSequenceErrors		 0
+0x74	 aAlignmentErrors			 0
+0x78	 aOctetsTransmittedOK			 0
+0x7c	 aOctetsReceivedOK			 0
+0x80	 aTxPAUSEMACCtrlFrames			 0
+0x84	 aRxPAUSEMACCtrlFrames			 0
+0x88	 ifInErrors				 0
+0x8c	 ifOutErrors				 0
+0x90	 ifInUcastPkts				 0
+0x94	 ifInMulticastPkts			 0
+0x98	 ifInBroadcastPkts			 0
+0x9c	 ifOutDiscards				 0
+0xa0	 ifOutUcastPkts				 0
+0xa4	 ifOutMulticastPkts			 0
+0xa8	 ifOutBroadcastPkts			 0
+0xac	 etherStatsDropEvents			 0
+0xb0	 etherStatsOctets			 0
+0xb4	 etherStatsPkts				 0
+0xb8	 etherStatsUndersizePkts		 0
+0xbc	 etherStatsOversizePkts			 0
+0xc0	 etherStatsPkts64Octets			 0
+0xc4	 etherStatsPkts65to127Octets		 0
+0xc8	 etherStatsPkts128to255Octets		 0
+0xcc	 etherStatsPkts256to511Octets		 0
+0xd0	 etherStatsPkts512to1023Octets		 0
+0xd4	 etherStatsPkts1024to1518Octets		 0
+0xd8	 etherStatsPkts1519toXOctets		 0
+0xdc	 etherStatsJabbers			 0
+0xe0	 etherStatsFragments			 0
+Info: Closed JTAG Master Service

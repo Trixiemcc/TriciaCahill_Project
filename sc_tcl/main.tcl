@@ -6,6 +6,9 @@ source tse_mac_config.tcl
 source tse_marvel_phy.tcl	
 source eth_gen_mon.tcl
 source tse_stat_read.tcl
+source tse_stat_results.tcl
+
+
 
 proc TEST_MAC_LB {speed_test} {
 	if  {$speed_test == "10M"} {

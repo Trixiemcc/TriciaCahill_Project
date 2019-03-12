@@ -1,29 +1,22 @@
 #!/usr/bin/python
 
-import pandas as pd
+#import pandas as pd
 import csv
+import pandas
+import subprocess
+import sh
+import fileinput
 
-print(pd.__version__)
+#print(pd.__version__)
 
+dataframe = pandas.read_csv("TestResults",delimiter="\t")
 
+@staticmethod
+def strip_characters(input_string):
+    return str(input_string).lower().replace(",,,", ",").replace(",,", ",").replace("Unnamed:","")
 
-with open('TestResults', 'r') as infile, open('TestResults.csv', 'w') as outfile:
-       #next(infile)	# skip the header line
-       stripped = (line.strip() for line in infile)
-       lines = (line.split(",") for line in stripped if line)
-       writer = csv.writer(outfile)
-       writer.writerows(lines)
-         
-	    
-df = pd.read_csv('TestResults.csv')
-
-#Sdf.drop(df.head(2).index)
-#df.drop(df.tail(1).index)
-
-df.drop(df.head(2).index, inplace=True)
-df.drop(df.tail(1).index, inplace=True)
-#print(df.to_string(index=False))
-
-df.to_csv('TestResults.csv')
+dataframe.to_csv("updated_TestResults.csv", encoding='utf-8', index=False)
 
 
+pipe = subprocess.Popen(["perl", "replace_script.pl"], stdout=subprocess.PIPE)
+#replace_script.pl

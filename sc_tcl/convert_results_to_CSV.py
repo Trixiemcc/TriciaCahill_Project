@@ -1,22 +1,24 @@
 #!/usr/bin/python
 
-#import pandas as pd
 import csv
 import pandas
 import subprocess
 import sh
 import fileinput
+import display_consol_results  # imported the display python script
 
-#print(pd.__version__)
 
+# read in the TestResults file
 dataframe = pandas.read_csv("TestResults",delimiter="\t")
 
-@staticmethod
-def strip_characters(input_string):
-    return str(input_string).lower().replace(",,,", ",").replace(",,", ",").replace("Unnamed:","")
-
+# replace multiple comma's with single ones
+# send the output to the updated_TestResults.csv
 dataframe.to_csv("updated_TestResults.csv", encoding='utf-8', index=False)
 
-
+#calls the perl script to tidy up the TestResults.csv file
 pipe = subprocess.Popen(["perl", "replace_script.pl"], stdout=subprocess.PIPE)
-#replace_script.pl
+
+
+# display the consol output, by calling the function
+# data_no_headers.head() from inside the display_consol_results script
+display_consol_results.data_no_headers.head()

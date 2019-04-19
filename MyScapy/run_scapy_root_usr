@@ -1,0 +1,22 @@
+#! /usr/bin/env python
+from scapy.all import *
+import os
+import sys
+
+os.system(r"~/python_netraw -O /usr/bin/scapy")
+
+#print r"send(IP(dst="1.2.3.4")/ICMP())"
+
+
+#import os
+#import sys
+import random
+import argparse
+
+
+def packet_calback(packet):
+    print packet.show()
+    print IP(_)
+
+
+#sniff(store=0, prn=packet_callback)

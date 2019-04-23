@@ -1,0 +1,26 @@
+1)	DosAttack
+	-This perfors a dos attack, it spoofs the src and the dst ip router, it 		is set up to send 10000 packets 
+	
+2)	ManInTheMiddle.py
+	- This is set up to run on a vert machine, it spoofs the victims and the 	gateway to forward all the infomation to the users MAC address
+	
+3)	run_scapy_root_usr
+	- This script will convert the terminal into sudo to dend the scapy 			packet ( Scapy has to be sudo)
+	
+4)	scapyicmp.py
+	- This script will send two packets.  The first is in a script format 			and the second is one line command line format.  the second one includes 	the src and dst addresses, while the frist just includes the dst.
+	
+5)	SniffTraffic.py
+	- This script will sniffs out the traffic on the network eno1, and
+	print it on the consol (live)
+	
+6)	tcpdump
+	- Thsi script will give you a count of all the packet being received 
+	on that network. 
+	
+7) 	tcpdump_readout
+	-This just opens the directory that the packets are saved in wireshark
+	
+8)	VLANHeaderPkts.py
+	-This script has VLAN tags associated with the packets, this is just
+	to show how it can be done.
